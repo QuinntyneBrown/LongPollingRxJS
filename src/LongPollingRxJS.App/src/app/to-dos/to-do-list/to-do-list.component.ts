@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '@shared/dialog.service';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 import { ToDo } from '../to-do';
 import { ToDoDetailComponent } from '../to-do-detail/to-do-detail.component';
 import { ToDoService } from '../to-do.service';
@@ -32,6 +32,7 @@ export class ToDoListComponent implements OnDestroy {
     })
   )
 
+  
   constructor(
     private readonly _toDoService: ToDoService,
     private readonly _dialogService: DialogService
@@ -46,6 +47,12 @@ export class ToDoListComponent implements OnDestroy {
     this._dialogService.open<ToDoDetailComponent>(ToDoDetailComponent);
   }
 
+  public delete(toDo) {
+    this._toDoService.remove({ toDo }).pipe(
+      takeUntil(this._destroyed),      
+    ).subscribe();
+  }
+  
   ngOnDestroy() {
     this._destroyed.next();
     this._destroyed.complete();

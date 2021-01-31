@@ -13,17 +13,12 @@ namespace LongPollingRxJS.Api.Features
         {
             public Validator()
             {
-
+                RuleFor(x => x.ToDoId).NotEqual(default(Guid));
             }
         }
 
         public class Request : IRequest<Unit> {  
             public Guid ToDoId { get; set; }
-        }
-
-        public class Response
-        {
-            public ToDoDto ToDo { get; set; }
         }
 
         public class Handler : IRequestHandler<Request, Unit>
@@ -34,7 +29,7 @@ namespace LongPollingRxJS.Api.Features
 
             public async Task<Unit> Handle(Request request, CancellationToken cancellationToken) {
 
-                var toDo = await _context.AsNoTracking().ToDos.FindAsync(request.ToDoId);
+                var toDo = await _context.ToDos.FindAsync(request.ToDoId);
 
                 toDo.Deleted = DateTime.UtcNow;
 

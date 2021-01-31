@@ -16,7 +16,7 @@ namespace LongPollingRxJS.Api.Data
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LongPollingRxJSDbContext).Assembly);
         }
 
         public ILongPollingRxJSDbContext AsNoTracking()
