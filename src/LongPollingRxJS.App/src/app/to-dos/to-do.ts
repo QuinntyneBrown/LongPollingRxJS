@@ -2,5 +2,6 @@ export type ToDo = {
     toDoId: string,
     name: string,
     htmlBody: string,
-    completed: Date
+    completed: string,
+    modified: string
 };

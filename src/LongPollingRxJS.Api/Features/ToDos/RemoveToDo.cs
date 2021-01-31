@@ -31,8 +31,8 @@ namespace LongPollingRxJS.Api.Features
 
                 var toDo = await _context.ToDos.FindAsync(request.ToDoId);
 
-                toDo.Deleted = DateTime.UtcNow;
-                toDo.Modified = DateTime.UtcNow;
+                toDo.Deleted = DateTime.Now;
+                toDo.Modified = DateTime.Now;
 
                 await _context.SaveChangesAsync(cancellationToken);
 

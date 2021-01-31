@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '@shared/dialog.service';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
 import { ToDo } from '../to-do';
 import { ToDoDetailComponent } from '../to-do-detail/to-do-detail.component';

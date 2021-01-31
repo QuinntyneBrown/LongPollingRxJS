@@ -38,7 +38,7 @@ export class ToDoDetailComponent implements OnDestroy {
 
   public save(vm: { form: FormGroup}) {
     const toDo = vm.form.value.toDo;
-    let obs$: Observable<{toDoId: string }>;
+    let obs$: Observable<{toDo: ToDo }>;
     if(toDo.toDoId) {
       obs$ = this._toDoService.update({ toDo })
     }   
@@ -49,7 +49,7 @@ export class ToDoDetailComponent implements OnDestroy {
     obs$.pipe(
       takeUntil(this._destroyed),      
       tap(x => {
-        this.saved.next(x.toDoId);
+        this.saved.next(x.toDo);
         this._overlayRef.dispose();
       })
     ).subscribe();
