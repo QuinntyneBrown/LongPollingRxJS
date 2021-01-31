@@ -21,7 +21,7 @@ export class ToDoListComponent implements OnDestroy {
     columnsToDisplay: string[]
   }> = combineLatest([
     this._toDoService.get(),
-    of(["name","actions"])
+    of(["name","completed","actions"])
   ])
   .pipe(
     map(([toDos, columnsToDisplay]) => {
@@ -37,8 +37,11 @@ export class ToDoListComponent implements OnDestroy {
     private readonly _dialogService: DialogService
   ) { }
 
-  public edit() {
-    this._dialogService.open<ToDoDetailComponent>(ToDoDetailComponent);
+  public edit(toDo: ToDo) {
+    var component = this._dialogService.open<ToDoDetailComponent>(ToDoDetailComponent)
+    
+    component.toDo$.next(toDo);
+
   }
 
   public create() {

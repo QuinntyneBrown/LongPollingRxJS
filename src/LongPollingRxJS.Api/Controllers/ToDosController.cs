@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LongPollingRxJS.Api.Controllers
 {
     [ApiController]
-    [Route("api/toDos")]
+    [Route("api/to-dos")]
     public class ToDosController
     {
         private readonly IMediator _mediator;

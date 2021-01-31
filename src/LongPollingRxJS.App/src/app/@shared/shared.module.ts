@@ -10,6 +10,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [    
@@ -24,6 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatListModule,
     MatTableModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatToolbarModule,
@@ -36,7 +40,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatListModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }

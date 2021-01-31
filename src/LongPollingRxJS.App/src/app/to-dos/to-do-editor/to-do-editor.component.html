@@ -4,4 +4,18 @@
         <input matInput placeholder='Name'
         formControlName='name' required>
     </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Html Body</mat-label>
+        <textarea matInput placeholder='Html Body'
+        formControlName='htmlBody'></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Completed</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName='completed'>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
 </form>

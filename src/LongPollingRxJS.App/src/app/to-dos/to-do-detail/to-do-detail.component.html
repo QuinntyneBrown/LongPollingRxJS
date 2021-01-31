@@ -1,9 +1,12 @@
-<mat-card>
+<mat-card *ngIf="vm$ | async as vm">
 
-    <form [formGroup]="form">
+    <form [formGroup]="vm.form">
         <app-to-do-editor formControlName="toDo">
-
         </app-to-do-editor>
     </form>
+
+    <button mat-raised-button (click)="save(vm)">Save</button>
+
+    <button mat-raised-button (click)="cancel()">Cancel</button>
 
 </mat-card>

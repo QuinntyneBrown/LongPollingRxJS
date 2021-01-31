@@ -16,28 +16,28 @@ export class ToDoService {
   ) { }
 
   public get(): Observable<ToDo[]> {
-    return this._client.get<{ toDos: ToDo[] }>(`${this._baseUrl}api/toDos`)
+    return this._client.get<{ toDos: ToDo[] }>(`${this._baseUrl}api/to-dos`)
       .pipe(
         map(x => x.toDos)
       );
   }
 
-  public getById(options: { toDoId: number }): Observable<ToDo> {
-    return this._client.get<{ toDo: ToDo }>(`${this._baseUrl}api/toDos/${options.toDoId}`)
+  public getById(options: { toDoId: string }): Observable<ToDo> {
+    return this._client.get<{ toDo: ToDo }>(`${this._baseUrl}api/to-dos/${options.toDoId}`)
       .pipe(
         map(x => x.toDo)
       );
   }
 
   public remove(options: { toDo: ToDo }): Observable<void> {
-    return this._client.delete<void>(`${this._baseUrl}api/toDos/${options.toDo.toDoId}`);
+    return this._client.delete<void>(`${this._baseUrl}api/to-dos/${options.toDo.toDoId}`);
   }
 
-  public create(options: { toDo: ToDo }): Observable<{ toDoId: number }> {
-    return this._client.post<{ toDoId: number }>(`${this._baseUrl}api/toDos`, { toDo: options.toDo });
+  public create(options: { toDo: ToDo }): Observable<{ toDoId: string }> {
+    return this._client.post<{ toDoId: string }>(`${this._baseUrl}api/to-dos`, { toDo: options.toDo });
   }  
 
-  public update(options: { toDo: ToDo }): Observable<{ toDoId: number }> {
-    return this._client.put<{ toDoId: number }>(`${this._baseUrl}api/toDos`, { toDo: options.toDo });
+  public update(options: { toDo: ToDo }): Observable<{ toDoId: string }> {
+    return this._client.put<{ toDoId: string }>(`${this._baseUrl}api/to-dos`, { toDo: options.toDo });
   }  
 }
