@@ -2,8 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { baseUrl } from '@core/constants';
 import { HttpClient } from '@angular/common/http';
 import { ToDo } from './to-do';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { delay, expand, map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +40,11 @@ export class ToDoService {
   public update(options: { toDo: ToDo }): Observable<{ toDoId: string }> {
     return this._client.put<{ toDoId: string }>(`${this._baseUrl}api/to-dos`, { toDo: options.toDo });
   }  
+
+  poll(interval: number = 5000): Observable<ToDo[]> {
+    return timer(0, interval)
+    .pipe(
+      switchMap(_ => this.get())
+    );
+ }
 }

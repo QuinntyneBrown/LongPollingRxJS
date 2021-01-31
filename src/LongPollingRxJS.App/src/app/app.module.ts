@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: baseUrl, useValue: "https://localhost:44366/" }
+    { provide: baseUrl, useValue: "https://localhost:5001/" }
   ],
   bootstrap: [AppComponent]
 })

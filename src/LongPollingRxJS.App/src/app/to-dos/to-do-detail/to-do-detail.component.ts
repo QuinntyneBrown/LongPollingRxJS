@@ -67,5 +67,4 @@ export class ToDoDetailComponent implements OnDestroy {
     this._destroyed.complete();
     this._destroyed.next();
   }
-
 }

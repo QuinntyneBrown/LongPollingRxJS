@@ -20,7 +20,7 @@ export class ToDoListComponent implements OnDestroy {
     dataSource: MatTableDataSource<ToDo>,
     columnsToDisplay: string[]
   }> = combineLatest([
-    this._toDoService.get(),
+    this._toDoService.poll(),
     of(["name","completed","actions"])
   ])
   .pipe(
@@ -38,10 +38,8 @@ export class ToDoListComponent implements OnDestroy {
   ) { }
 
   public edit(toDo: ToDo) {
-    var component = this._dialogService.open<ToDoDetailComponent>(ToDoDetailComponent)
-    
-    component.toDo$.next(toDo);
-
+    this._dialogService.open<ToDoDetailComponent>(ToDoDetailComponent)
+    .toDo$.next(toDo);    
   }
 
   public create() {
@@ -52,5 +50,4 @@ export class ToDoListComponent implements OnDestroy {
     this._destroyed.next();
     this._destroyed.complete();
   }
-
 }

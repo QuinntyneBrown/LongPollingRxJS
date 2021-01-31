@@ -34,7 +34,7 @@ export class ToDoEditorComponent implements ControlValueAccessor,  Validator  {
     toDoId: new FormControl(),
     name: new FormControl(null, [Validators.required]),
     htmlBody: new FormControl(),
-    completed: new FormControl(new Date())
+    completed: new FormControl()
   });
   
   writeValue(toDo: ToDo): void {   
