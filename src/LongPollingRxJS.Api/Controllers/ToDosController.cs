@@ -1,6 +1,7 @@
 using LongPollingRxJS.Api.Features;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -57,6 +58,13 @@ namespace LongPollingRxJS.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetToDos.Response), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<GetToDos.Response>> Get()
-            => await _mediator.Send(new GetToDos.Request());           
+            => await _mediator.Send(new GetToDos.Request());
+
+        [HttpGet("since/{since}",Name = "GetToDosSinceRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetSince.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetSince.Response>> GetSince([FromRoute]GetSince.Request request)
+            => await _mediator.Send(request);
     }
 }

@@ -30,9 +30,8 @@ export class ToDoListComponent implements OnDestroy {
         columnsToDisplay
       }
     })
-  )
+  );
 
-  
   constructor(
     private readonly _toDoService: ToDoService,
     private readonly _dialogService: DialogService

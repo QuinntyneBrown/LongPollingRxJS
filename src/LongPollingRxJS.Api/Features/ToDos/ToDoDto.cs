@@ -8,5 +8,6 @@ namespace LongPollingRxJS.Api.Features
         public string Name { get; set; }
         public string HtmlBody { get; set; }
         public DateTime? Completed { get; set; }
+        public DateTime Modified { get; set; }
     }
 }

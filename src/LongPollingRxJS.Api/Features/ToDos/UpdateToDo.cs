@@ -2,6 +2,7 @@ using FluentValidation;
 using LongPollingRxJS.Api.Data;
 using LongPollingRxJS.Api.Models;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,6 +41,7 @@ namespace LongPollingRxJS.Api.Features
                 toDo.HtmlBody = request.ToDo.HtmlBody;
                 toDo.Name = request.ToDo.Name;
                 toDo.Completed = request.ToDo.Completed;
+                toDo.Modified = DateTime.UtcNow;
 
                 await _context.SaveChangesAsync(cancellationToken);
 

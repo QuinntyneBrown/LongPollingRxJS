@@ -37,11 +37,8 @@ export class ToDoDetailComponent implements OnDestroy {
   }
 
   public save(vm: { form: FormGroup}) {
-    
     const toDo = vm.form.value.toDo;
-
     let obs$: Observable<{toDoId: string }>;
-
     if(toDo.toDoId) {
       obs$ = this._toDoService.update({ toDo })
     }   
@@ -56,7 +53,6 @@ export class ToDoDetailComponent implements OnDestroy {
         this._overlayRef.dispose();
       })
     ).subscribe();
-
   }
 
   public cancel() {

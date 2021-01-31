@@ -11,7 +11,8 @@ namespace LongPollingRxJS.Api.Features
                 ToDoId = toDo.ToDoId,
                 Name = toDo.Name,
                 HtmlBody = toDo.HtmlBody,
-                Completed = toDo.Completed
+                Completed = toDo.Completed,
+                Modified = toDo.Modified
             };
         }
     }

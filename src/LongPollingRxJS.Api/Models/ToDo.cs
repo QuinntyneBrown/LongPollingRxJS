@@ -14,6 +14,7 @@ namespace LongPollingRxJS.Api.Models
         public string HtmlBody { get; set; }
         public DateTime? Deleted { get; set; }
         public DateTime? Completed { get; set; }
+        public DateTime Modified { get; set; } = DateTime.UtcNow;
     }
 
 }
